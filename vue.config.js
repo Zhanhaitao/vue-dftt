@@ -48,16 +48,16 @@ var baseConfig = {
 };
 
 var devConfig = {
-  baseUrl: '/',
+  publicPath: '/',
   filenameHashing: false,
   devServer: {
     host: '0.0.0.0',
-    port: 8094
+    port: 8089
   }
 };
 
 var prodConfig = {
-  baseUrl: '',
+  publicPath: '',
   productionSourceMap: false,
   chainWebpack: config => {
     config.plugin('bundle-analyzer').use(BundleAnalyzerPlugin, [

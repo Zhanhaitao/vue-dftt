@@ -1,0 +1,65 @@
+/**
+ * 背景图（区分2倍图、3倍图）
+ * @param  {[type]} $urlPath 图片url路径，不要后缀（目前只支持png）
+ */
+
+@mixin bg-img($urlPath) {
+  background-image: url($urlPath+'@2x.png');
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    background-image: url($urlPath+'@3x.png');
+  }
+}
+
+// 单行文本溢出省略显示
+@mixin text-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行文本溢出省略显示 (支持 WebKit浏览器或移动端的页面)，默认3行
+@mixin text-ellipsis-m($line: 3) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+@mixin border-1px ($color, $direction) {
+  content: '';
+  position: absolute;
+  background: $color;
+  @if $direction == left {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    transform: scaleX(0.5);
+    transform-origin: left 0;
+  }
+  @if $direction == right {
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    transform: scaleX(0.5);
+    transform-origin: right 0;
+  }
+  @if $direction == bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleY(0.5);
+    transform-origin: 0 bottom;
+  }
+  @if $direction == top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleY(0.5);
+    transform-origin: 0 top;
+  }
+}
